@@ -8,29 +8,31 @@ user_profile = {
    "mood": None,
    "sentence": None,
 }
+
+user_profile = {'type_workout': 'cardio', 'time': 20, 'mood': 3, 'sentence': 'I love working out!'}
 """
 
-user_profile = {
-   "type_workout": None,
-   "time": None,
-   "mood": 2,
-   "sentence": "I love working out!",
-}
 
 import boto3
 import json
 import numpy as np
 import uuid
 
+ACCESS_ID = "XXXXXXXXXXXXXXXXXXXXX"
+ACCESS_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+
 comprehend_client = boto3.client("comprehend", region_name='us-east-2',
                                  aws_access_key_id=ACCESS_ID,
                                  aws_secret_access_key=ACCESS_KEY
                                  )
 
-with open("../data/workouts.json", "r") as f:
-    workouts = json.load(f)
 
-with open("../data/ratings.json", "r") as f:
+with open("data/workouts.json", "r") as f:
+    workouts = json.load(f)
+    print(workouts)
+
+with open("data/ratings.json", "r") as f:
     ratings = json.load(f)
 
 def compute_score(input_data):
@@ -45,47 +47,40 @@ def compute_score(input_data):
     return total_score
 
 
-print(compute_score(user_profile))
+#print(compute_score(user_profile))
 
 def get_workout(input_data):
-    """Returns workout given input data.
-    """
-    # filter by type
-    filtered_input_data = list(filter(lambda x: x['type_workout'] == input_data['type_workout'], workouts))
-
-    # get list of times
-    time_list = list(map(lambda x: x['time'], filtered_input_data))
-
-    # find workout if exists for "time", return it
-    if input_data['time'] in time_list:
-        # get workout that is
-        workout_list = list(filter(lambda x: x['time'] == input_data['time'], time_list))
-
-        # get ratings that correspond to workouts in workout_list
-        ratings_we_want = []
-        for rating in ratings:
-            if rating['workout_id'] in workout_list:
-                ratings_we_want.append(rating)
-
-        # no rating exists, so just pick first
-        if not ratings_we_want: 
-            workout = workout_list[0]
-        # grab workout with highest positive sentiment score
-        else:
-            workout = max(ratings_we_want, key=lambda x: x['SentimentScore']['Positive'])
-    # else create a new workout with the given user time -- same attributes as workout that is CLOSEST
+    score = compute_score(input_data)
+    time = input_data['time']
+    print(time)
+    type_workout = input_data['type_workout']
+    print(type_workout)
+    for i in range(len(workouts)):
+        print(workouts[i]['type_workout'])
+        if workouts[i]['type_workout'] == type_workout:
+            category_df = workouts[i]
+    if score < 1:
+        narrowed_df = category_df['workouts'][0]['activities']
+    elif 1 <= score < 2:
+        narrowed_df = category_df['workouts'][1]['activities']
     else:
-        # get index of workout that is closest time-wise to input_data['time']
-        closest_i = np.argmin(map(lambda x: abs(x - input_data['time']), time_list))
+        narrowed_df = category_df['workouts'][2]['activities']
+    for key in narrowed_df:
+        print(narrowed_df[key])
+        narrowed_df[key] = time * narrowed_df[key]
+    print(narrowed_df)
+    if type_workout == "cardio":
+        for key in narrowed_df:
+            narrowed_df[key] = {"time": str(narrowed_df[key]) + " Min.", "sets": None, "reps": None}
+        return narrowed_df
+    else:
+        for key in narrowed_df:
+            narrowed_df[key] = {"time": str(narrowed_df[key]) + " Min.", "sets": str(round(narrowed_df[key] * 2/5)), "reps": 10}
+        return narrowed_df
 
-        # new workout
-        workout = filtered_input_data[closest_i]
-        workout['time'] = input_data['time']
 
-        # add new workout to data
-        workouts.append(workout)
-    
-    return workout
+#print(get_workout(user_profile))
+
 
 def add_post_workout_rating(workout_id, rating):
     """Adds new rating for workout_id with text 'rating'
@@ -107,22 +102,3 @@ def suggest_workout():
     """
     pass
 
-if __name__ == '__main__':
-    text="this workout was hard because I was pretty tired"
-    response = comprehend_client.detect_sentiment(Text=text, LanguageCode='en')
-    print(response)
-
-    L = []
-    L.append(get_workout({
-        "type_workout": "cardio",
-        "time": 40,
-        "mood": "bad",
-        "sentence": "this sucks",
-    }))
-
-    add_post_workout_rating(1, "Was awesome!")
-
-    print("ratings****\n\n", ratings)
-    print("workouts***\n\n", workouts)
-
-    print(L)

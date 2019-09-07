@@ -1,65 +1,46 @@
 [
-    {
-        "type": "cardio",
-        "description": "run",
-        "estimated_duration": 10,
-        "intensity": 1,
-        "id": 1
-    },
-    {
-        "type": "cardio",
-        "description": "elliptical",
-        "estimated_duration": 30,
-        "intensity": 3,
-        "id": 2
-    },
-    {
-        "type": "cardio",
-        "description": "run",
-        "estimated_duration": 30,
-        "intensity": 6,
-        "id": 3
-    },
-    {
-        "type": "cardio",
-        "description": "run for half the time; bike for the other half of the time",
-        "estimated_duration": 60,
-        "intensity": 10,
-        "id": 4
-    },
-    {
-        "type": "cardio",
-        "description": "run for half the time; elliptical for the other half of the time",
-        "estimated_duration": 50,
-        "intensity": 8,
-        "id": 5
-    },
-    {
-        "type": "cardio",
-        "description": "bike",
-        "estimated_duration": 45,
-        "intensity": 5,
-        "id": 6
-    },
-    {
-        "type": "cardio",
-        "description": "run for half the time; bike for the other half of the time",
-        "estimated_duration": 40,
-        "intensity": 9,
-        "id": "f15915e2-1f13-47ea-a1bd-6bac7bdea205"
-    },
-    {
-        "type": "core",
-        "description": "3x [30x bicycle, 1 min plank, 30x crunch]",
-        "estimated_duration": 15,
-        "intensity": 6,
-        "id": "f15915e2-1f13-47ea-a1bd-6bac7bdea205"
-    },
-    {
-        "type": "core",
-        "description": "3x [30 sec plank, 10x reverse crunch, 10 side crunch each side]",
-        "estimated_duration": 10,
-        "intensity": 3,
-        "id": "f15915e2-1f13-47ea-a1bd-6bac7bdea205"
-    }
+   {
+       "type_workout": "cardio",
+       "workouts": [
+           {"id": 1, "activities": {
+               "treadmill": 0.3, "biking": 0.4, "elliptical": 0.15, "rowing": 0.15}},
+           {"id": 2, "activities": {
+               "treadmill": 0.25, "biking": 0.25, "elliptical": 0.25, "rowing": 0.25}},
+           {"id": 3, "activities": {
+               "treadmill": 0.25, "biking": 0.15, "elliptical": 0.3, "rowing": 0.3}}
+       ]
+   },
+   {
+       "type_workout": "core",
+       "workouts": [
+           {"id": 1, "activities": {
+               "sit-ups": 0.3, "mason twists": 0.4, "crunches": 0.15, "leg raises": 0.15}},
+           {"id": 2, "activities": {
+               "sit-ups": 0.25, "mason twists": 0.25, "crunches": 0.25, "leg raises": 0.25}},
+           {"id": 3, "activities": {
+               "sit-ups": 0.25, "mason twists": 0.15, "crunches": 0.3, "leg raises": 0.3}}
+       ]
+   },
+   {
+       "type_workout": "legs",
+       "workouts": [
+           {"id": 1, "activities": {
+               "squats": 0.3, "lunges": 0.4, "quad extension": 0.15, "leg press": 0.15}},
+           {"id": 2, "activities": {
+               "squats": 0.25, "lunges": 0.25, "quad extension": 0.25, "leg press": 0.25}},
+           {"id": 3, "activities": {
+               "squats": 0.25, "lunges": 0.15, "quad extension": 0.3, "leg press": 0.3}}
+       ]
+   },
+   {
+       "type_workout": "arms",
+       "workouts": [
+           {"id": 1, "activities": {
+               "barbell curls": 0.3, "dumbbell bicep curls": 0.4, "tricep pull downs": 0.15, "lateral raises": 0.15}},
+           {"id": 2, "activities": {
+               "barbell curls": 0.25, "dumbbell bicep curls": 0.25, "tricep pull downs": 0.25, "lateral raises": 0.25}},
+           {"id": 3, "activities": {
+               "barbell curls": 0.25, "dumbbell bicep curls": 0.15, "tricep pull downs": 0.3, "lateral raises": 0.3}}
+       ]
+   }
 ]
