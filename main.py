@@ -56,7 +56,8 @@ def get_text():
         user_profile["sentence"] = text
         print(user_profile)
         workout_dic = get_workout(user_profile)
-        return str(workout_dic)
+
+        return render_template("workout.html", context=workout_dic)
 
 
 if __name__ == '__main__':
