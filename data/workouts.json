@@ -1,8 +1,46 @@
 [
     {
-        "time": 50,
         "type_workout": "cardio",
-        "description": "go for a run",
-        "id": 1   
+        "workouts": [
+            {"id": 1, "activities": {
+                "treadmill": 0.3, "biking": 0.4, "elliptical": 0.15, "rowing": 0.15}},
+            {"id": 2, "activities": {
+                "treadmill": 0.25, "biking": 0.25, "elliptical": 0.25, "rowing": 0.25}},
+            {"id": 3, "activities": {
+                "treadmill": 0.25, "biking": 0.15, "elliptical": 0.3, "rowing": 0.3}}
+        ]
+    },
+    {
+        "type_workout": "core",
+        "workouts": [
+            {"id": 1, "activities": {
+                "sit-ups": 0.3, "mason twists": 0.4, "crunches": 0.15, "leg raises": 0.15}},
+            {"id": 2, "activities": {
+                "sit-ups": 0.25, "mason twists": 0.25, "crunches": 0.25, "leg raises": 0.25}},
+            {"id": 3, "activities": {
+                "sit-ups": 0.25, "mason twists": 0.15, "crunches": 0.3, "leg raises": 0.3}}
+        ]
+    },
+    {
+        "type_workout": "legs",
+        "workouts": [
+            {"id": 1, "activities": {
+                "squats": 0.3, "lunges": 0.4, "quad extension": 0.15, "leg press": 0.15}},
+            {"id": 2, "activities": {
+                "squats": 0.25, "lunges": 0.25, "quad extension": 0.25, "leg press": 0.25}},
+            {"id": 3, "activities": {
+                "squats": 0.25, "lunges": 0.15, "quad extension": 0.3, "leg press": 0.3}}
+        ]
+    },
+    {
+        "type_workout": "arms",
+        "workouts": [
+            {"id": 1, "activities": {
+                "barbell curls": 0.3, "dumbbell bicep curls": 0.4, "tricep pull downs": 0.15, "lateral raises": 0.15}},
+            {"id": 2, "activities": {
+                "barbell curls": 0.25, "dumbbell bicep curls": 0.25, "tricep pull downs": 0.25, "lateral raises": 0.25}},
+            {"id": 3, "activities": {
+                "barbell curls": 0.25, "dumbbell bicep curls": 0.15, "tricep pull downs": 0.3, "lateral raises": 0.3}}
+        ]
     }
 ]

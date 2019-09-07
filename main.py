@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for
 import os
+#from workout_engine.workout_engine import get_workout
 
 app = Flask(__name__)
 
@@ -43,6 +44,7 @@ def get_mood():
         user_profile["mood"] = mood
         print(user_profile)
         return render_template("input.html")
+
 
 @app.route('/input', methods = ['POST'])
 def get_text():

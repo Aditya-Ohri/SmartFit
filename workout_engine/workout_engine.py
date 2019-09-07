@@ -10,18 +10,45 @@ user_profile = {
 }
 """
 
+user_profile = {
+   "type_workout": None,
+   "time": None,
+   "mood": 2,
+   "sentence": "I love working out!",
+}
+
 import boto3
 import json
 import numpy as np
 import uuid
 
-comprehend_client = boto3.client("comprehend")
+ACCESS_ID = "AKIAU6R6BN4VAIWIBQ5O"
+ACCESS_KEY = "F6CBZQrSle2qsO0XIREmVUZwBhiha3KlNIphXqm+"
 
-with open("data/workouts.json", "r") as f:
+comprehend_client = boto3.client("comprehend", region_name='us-east-2',
+                                 aws_access_key_id=ACCESS_ID,
+                                 aws_secret_access_key=ACCESS_KEY
+                                 )
+
+with open("../data/workouts.json", "r") as f:
     workouts = json.load(f)
 
-with open("data/ratings.json", "r") as f:
+with open("../data/ratings.json", "r") as f:
     ratings = json.load(f)
+
+def compute_score(input_data):
+    text_analyze = input_data["sentence"]
+    mood_score = input_data["mood"]
+
+    analysis = comprehend_client.detect_sentiment(Text=text_analyze, LanguageCode='en')
+    text_score = analysis['SentimentScore']['Positive']
+
+    total_score = mood_score * text_score
+
+    return total_score
+
+
+print(compute_score(user_profile))
 
 def get_workout(input_data):
     """Returns workout given input data.
