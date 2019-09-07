@@ -1,15 +1,3 @@
-"""
-
-Duration_Ms Type Description Pre_Sentiment_Value  => Post_Sentiment_Value
-
-user_profile = {
-   "type_workout": None,
-   "time": None,
-   "mood": None,
-   "sentence": None,
-}
-"""
-
 import boto3
 import json
 import numpy as np

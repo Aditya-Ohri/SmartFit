@@ -8,3 +8,6 @@ env/
 
 # python
 __pycache__
+
+# damn mac
+.DS_Store
