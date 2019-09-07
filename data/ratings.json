@@ -1,0 +1,13 @@
+[
+    {
+        "workout_id": 1,
+        "id": 1,
+        "post_sentiment_value": "NEGATIVE",
+        "SentimentScore": {
+            "Positive": 0.18008455634117126,
+            "Negative": 0.5096880197525024,
+            "Neutral": 0.2282538264989853,
+            "Mixed": 0.08197354525327682
+        }
+    }
+]
