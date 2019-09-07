@@ -11,12 +11,13 @@ user_profile = {
     "sentence": None,
 }
 
+
 @app.route('/')
 def home():
     return render_template("type.html")
 
 
-@app.route('/type', methods = ['POST'])
+@app.route('/type', methods=['POST'])
 def get_type():
     if request.method == 'POST':
         type_workout = request.form['type']
@@ -26,7 +27,7 @@ def get_type():
         return render_template("time.html")
 
 
-@app.route('/time', methods = ['POST'])
+@app.route('/time', methods=['POST'])
 def get_time():
     if request.method == 'POST':
         time_workout = request.form['time']
@@ -36,7 +37,7 @@ def get_time():
         return render_template("mood.html")
 
 
-@app.route('/mood', methods = ['POST'])
+@app.route('/mood', methods=['GET', 'POST'])
 def get_mood():
     if request.method == 'POST':
         mood = request.form['mood']
@@ -44,9 +45,10 @@ def get_mood():
         user_profile["mood"] = mood
         print(user_profile)
         return render_template("input.html")
+    elif request.method == 'GET':
+        return render_template("mood.html")
 
-
-@app.route('/input', methods = ['POST'])
+@app.route('/input', methods=['POST'])
 def get_text():
     if request.method == 'POST':
         text = request.form['text']

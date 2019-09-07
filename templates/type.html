@@ -3,6 +3,10 @@
 
 <head>
 	<link rel="stylesheet" href="{{ url_for('static', filename='Css/stylesheet.css') }}">
+	<meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="315593540637-3050k61ugen5c8jt8e4d0th5cciunl54.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	
 	<div class="div2">
 		<svg width="1440px" height="82px">
 
@@ -19,7 +23,7 @@
 
 	</div>
 	<div class="div3">
-		<p>Sign In</p>
+		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 	</div>
 
 
@@ -38,71 +42,71 @@
 	<div class="main1">
 
 		<form action="{{ url_for('get_type')}}" method="post" enctype="multipart/form-data">
-		<img class="logo1" src="{{ url_for('static', filename='Css/logo.png') }}" style="position: absolute;
+			<img class="logo1" src="{{ url_for('static', filename='Css/logo.png') }}" style="position: absolute;
 width: 300px;
 height: 150px;
 left: -10px;
 top: -258px;
 ">
-		<img class="mail" src="{{ url_for('static', filename='Css/m.png') }}" style="position: absolute;
+			<img class="mail" src="{{ url_for('static', filename='Css/m.png') }}" style="position: absolute;
 width: 51px;
 height: 51px;
 left: 1219px;
 top: -207px;
 ">
-		<img class="search" src="{{ url_for('static', filename='Css/s.png') }}" style="position: absolute;
+			<img class="search" src="{{ url_for('static', filename='Css/s.png') }}" style="position: absolute;
 width: 45px;
 height: 48px;
 left: 1290px;
 top: -205px;">
-		<img class="back1" src="{{ url_for('static', filename='Css/fit.png') }}" style="position: absolute;
+			<img class="back1" src="{{ url_for('static', filename='Css/fit.png') }}" style="position: absolute;
 width: 1370px;
 height: 909px;
 left: 0px;
 top: -152px;">
 
-		<img class="logo2" src="{{ url_for('static', filename='Css/logo2.png') }}" style="
+			<img class="logo2" src="{{ url_for('static', filename='Css/logo2.png') }}" style="
 position: absolute;
 width: 500px;
 height: 250px;
 left: 420px;
 top: 1137px;">
-		<a href="time.html">
+			<a href="time.html">
 				<button name="type" type="submit" value="Core">
-			<img class="core" src="{{ url_for('static', filename='Css/corebt.png') }}" style="
+					<img class="core" src="{{ url_for('static', filename='Css/corebt.png') }}" style="
 position: absolute;
 width: 446px;
 height: 452px;
 left: 746px;
 top: 826px;
 ">
-</button>
-<button name="type" type="submit" value="Arms">
-			<img class="arms" src="{{ url_for('static', filename='Css/armbt.png') }}" style="
+				</button>
+				<button name="type" type="submit" value="Arms">
+					<img class="arms" src="{{ url_for('static', filename='Css/armbt.png') }}" style="
 position: absolute;
 width: 450px;
 height: 450px;
 left: 123px;
 top: 828px;
 ">
-</button>
-<button name="type" type="submit" value="Legs">
-			<img class="legs" src="{{ url_for('static', filename='Css/legs.png') }}" style="
+				</button>
+				<button name="type" type="submit" value="Legs">
+					<img class="legs" src="{{ url_for('static', filename='Css/legs.png') }}" style="
 position: absolute;
 width: 446px;
 height: 446px;
 left: 123px;
 top: 1164px;">
-</button>
-<button name="type" type="submit" value="Cardio">
-			<img class="cardio" src="{{ url_for('static', filename='Css/carbt.png') }}" style="position: absolute;
+				</button>
+				<button name="type" type="submit" value="Cardio">
+					<img class="cardio" src="{{ url_for('static', filename='Css/carbt.png') }}" style="position: absolute;
 width: 453px;
 height: 453px;
 left: 746px;
 top: 1160px;
 ">
-</button>
-</form>
+				</button>
+		</form>
 		</a>
 	</div>
 	<div class="main1">
@@ -127,12 +131,28 @@ height:20px;
 fill: rgba(250, 241, 194, 0.93);" />
 
 	</svg>
+	<!-- Google Sign In Script -->
+	<script>
+		function onSignIn(googleUser) {
+			// Useful data for your client-side scripts:
+			var profile = googleUser.getBasicProfile();
+			console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+			console.log('Full Name: ' + profile.getName());
+			console.log('Given Name: ' + profile.getGivenName());
+			console.log('Family Name: ' + profile.getFamilyName());
+			console.log("Image URL: " + profile.getImageUrl());
+			console.log("Email: " + profile.getEmail());
 
-
+			// The ID token you need to pass to your backend:
+			var id_token = googleUser.getAuthResponse().id_token;
+			console.log("ID Token: " + id_token);
+		}
+	</script>
 </body>
 <footer id="mainfoot" style=" text-align: center;
 		 background-color: rgba(250, 241, 194, 0.93);
 		 color:white;
-		 padding:10px; margin-top: 400px "><img src="{{ url_for('static', filename='Css/logo.png') }}" style="width: 20%"></footer>
+		 padding:10px; margin-top: 400px "><img src="{{ url_for('static', filename='Css/logo.png') }}" style="width: 20%">
+</footer>
 
 </html>
