@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html style="background:  rgba(168, 208, 230, 0.66)">
+
 <head>
 	<link rel="stylesheet" href="Css/stylesheet.css">
 	<div class="div2">
@@ -30,7 +31,7 @@
 
 
 
-	<title>Personal Fitness AI</title>
+	<title>Availability</title>
 
 <body>
 	
@@ -59,53 +60,64 @@ height: 909px;
 left: 0px;
 top: -152px;">
 	
-	<img class="logo2" 	src="Css\logo2.png" style="
-position: absolute;
-width: 500px;
-height: 250px;
-left: 420px;
-top: 1137px;">
-<a href="time.html">
-	<img class="core" 	src="Css\corebt.png"style="
-position: absolute;
-width: 446px;
-height: 452px;
-left: 746px;
-top: 826px;
-">
-	<img class="arms" 	src="Css\armbt.png"style="
-position: absolute;
-width: 450px;
-height: 450px;
-left: 123px;
-top: 828px;
-">
-	<img class="legs" 	src="Css\legs.png" style="
-position: absolute;
-width: 446px;
-height: 446px;
-left: 123px;
-top: 1164px;">
-	<img class="cardio" 	src="Css\carbt.png"style="position: absolute;
-width: 453px;
-height: 453px;
-left: 746px;
-top: 1160px;
-">
-</a>
-</div>
+
+
+
 <div class="main1">
-	<img class="maint" 	src="Css\et.png" style="position: absolute;
+	<img class="maint" 	src="Css\mood.png" style="
+position: absolute;
 width: 723px;
 height: 723px;
 left: 320px;
-top: -103px;
+top: -213px;
+
+
+
 ">
+<form action="{{ url_for('get_type')}}" method="post" enctype="multipart/form-data">
+<a href="input.html">
+<div class="main1">
+	
+		<button name="type" type="submit" value="neu">
+	<img class="neu" 	src="Css\fac1.png" style="position: absolute;
+width: 381px;
+height: 381px;
+left: 500px;
+top: 240px;
+">
+</button>
 
 </div>
-<svg width="1440px" height="1182px" >
+<div class="main1">
+	<button name="type" type="submit" value="happy">
+	<img class="happy" 	src="Css\fac2.png" style="position: absolute;
+width: 381px;
+height: 381px;
+left: 100px;
+top: 240px;
+">
+</button>
+
+</div>
+<div class="main1">
+	<button name="type" type="submit" value="sad">
+	<img class="sad" 	src="Css\fac3.png" style="position: absolute;
+width: 381px;
+height: 381px;
+left: 900px;
+top: 240px;
+">
+</button>
+
+
+</div>
+</form>
+</a>
+
+<svg width="1440px" height="352px" >
 			
 		  <rect  width="1440px" height="42px"style="
+		  visibility: hidden;
   bottom: 0px;
   border: 3px 
   width: 1440px;
