@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Fit - Select Mood</title>
+</head>
+<body>
+<form action="{{ url_for('get_mood')}}" method="post" enctype="multipart/form-data">
+    <button name="mood" type="submit" value="Happy">Happy</button>
+    <button name="mood" type="submit" value="Average">Average</button>
+    <button name="mood" type="submit" value="Sad">Sad</button>
+</form>
+</body>
+</html>

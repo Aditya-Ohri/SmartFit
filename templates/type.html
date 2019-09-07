@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Fit - Select Workout</title>
+</head>
+<body>
+    <form action="{{ url_for('get_type')}}" method="post" enctype="multipart/form-data">
+        <button name="type" type="submit" value="Cardio">Cardio</button>
+        <button name="type" type="submit" value="Core">Core</button>
+        <button name="type" type="submit" value="Legs">Legs</button>
+        <button name="type" type="submit" value="Arms">Arms</button>
+    </form>
+<script>
+</script>
+</body>
+</html>
