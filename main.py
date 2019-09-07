@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for
 import os
-#from workout_engine.workout_engine import get_workout
+from workout_engine.workout_engine import get_workout
 
 app = Flask(__name__)
 
@@ -41,7 +41,7 @@ def get_mood():
     if request.method == 'POST':
         mood = request.form['mood']
         print(mood)
-        user_profile["mood"] = mood
+        user_profile["mood"] = int(mood)
         print(user_profile)
         return render_template("input.html")
 
@@ -53,7 +53,8 @@ def get_text():
         print(text)
         user_profile["sentence"] = text
         print(user_profile)
-        return text
+        workout_dic = get_workout(user_profile)
+        return str(workout_dic)
 
 
 if __name__ == '__main__':
