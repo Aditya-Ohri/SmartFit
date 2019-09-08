@@ -111,7 +111,7 @@ font-family:Helvetica;color:#F26A6A;
  font-size: 45px; 
 ">EXERCISE {{loop.index}}</label>
 
-			<label class="exercise-time" style="position: absolute;
+			<label class="exercise-name" style="position: absolute;
 			width: 887px;
 			height: 387px;
 			left: 195px;
@@ -131,7 +131,7 @@ font-family:Helvetica;color:#F26A6A;
 font-weight:bold;
 font-family:Helvetica;color:#F26A6A;
  font-size: 45px; 
-">{{ workout.workout[workout_name]['sets'] }} sets</label>
+">{% if not workout.workout[workout_name]['sets'] == None %}{{ workout.workout[workout_name]['sets'] }} sets{% endif %}</label>
 <!-- minus 200px each loop to top-->
 
 <label class="exercise-reps" style="position: absolute;
@@ -142,9 +142,19 @@ top: 1057px;
 font-weight:bold;
 font-family:Helvetica;color:#F26A6A;
  font-size: 45px; 
-">{{ workout.workout[workout_name]['reps'] }} reps</label>
+">{% if not workout.workout[workout_name]['reps'] == None %}{{ workout.workout[workout_name]['reps'] }} reps{% endif %}</label>
 <!-- minus 200px each loop to top-->
 
+<label class="exercise-time" style="position: absolute;
+width: 887px;
+height: 387px;
+left: 1110px;
+top: 1057px;
+font-weight:bold;
+font-family:Helvetica;color:#F26A6A;
+ font-size: 45px; 
+">{{ workout.workout[workout_name]['time'] }}</label>
+<!-- minus 200px each loop to top-->
 
 
 {% endfor %}
@@ -182,7 +192,7 @@ var exerciseLabels = document.getElementsByClassName("exercise-label");
 for (var i = 0; i < exerciseLabels.length; i++) {
     exerciseLabels[i].style.top = (387 + (i * 200)).toString() + "px";
 }
-var exerciseLabels = document.getElementsByClassName("exercise-time");
+var exerciseLabels = document.getElementsByClassName("exercise-name");
 for (var i = 0; i < exerciseLabels.length; i++) {
     exerciseLabels[i].style.top = (1057 - (i * 200)).toString() + "px";
 }
@@ -191,6 +201,10 @@ for (var i = 0; i < exerciseLabels.length; i++) {
     exerciseLabels[i].style.top = (1057 - (i * 200)).toString() + "px";
 }
 var exerciseLabels = document.getElementsByClassName("exercise-reps");
+for (var i = 0; i < exerciseLabels.length; i++) {
+    exerciseLabels[i].style.top = (1057 - (i * 200)).toString() + "px";
+}
+var exerciseLabels = document.getElementsByClassName("exercise-time");
 for (var i = 0; i < exerciseLabels.length; i++) {
     exerciseLabels[i].style.top = (1057 - (i * 200)).toString() + "px";
 }

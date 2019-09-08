@@ -69,7 +69,7 @@ def get_text():
         return render_template("workout.html", context=workout_dic)
     elif request.method == 'GET':
         # TESTING
-        user_profile = {'type_workout': 'arms', 'time': 25,
+        user_profile = {'type_workout': 'legs', 'time': 25,
                         'mood': 3, 'sentence': 'pretty good'}
         workout_dic = get_workout(user_profile)
         
