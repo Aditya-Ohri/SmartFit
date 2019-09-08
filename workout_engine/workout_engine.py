@@ -22,10 +22,7 @@ ACCESS_ID = "XXXXXXXXXXXXXXXXXXXXX"
 ACCESS_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 
-comprehend_client = boto3.client("comprehend", region_name='us-east-2',
-                                 aws_access_key_id=ACCESS_ID,
-                                 aws_secret_access_key=ACCESS_KEY
-                                 )
+comprehend_client = boto3.client("comprehend")
 
 
 with open("data/workouts.json", "r") as f:
