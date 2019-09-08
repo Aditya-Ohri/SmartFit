@@ -1,13 +1,14 @@
 import boto3
-
-from PIL import Image
-from io import BytesIO
 from base64 import b64decode
 import re
 
+ACCESS_ID = "XXXXXXXXXXXXXXXXXXXXXXX"
+ACCESS_KEY = "XXXXXXXXXXXXXXXX"
 
 # Create SDK clients for rekognition
-rekog_client = boto3.client("rekognition")
+rekog_client = boto3.client("rekognition", region_name='us-east-2',
+                                 aws_access_key_id=ACCESS_ID,
+                                 aws_secret_access_key=ACCESS_KEY)
 
 
 def bytes_to_img(imageBytes):

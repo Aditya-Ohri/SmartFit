@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html style="background:  rgba(168, 208, 230, 0.66)">
 <head>
-	<link rel="stylesheet" href="Css/stylesheet.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='Css/stylesheet.css') }}">
 	<div class="div2">
 		<svg width="1440px" height="82px">
 			
@@ -36,7 +36,7 @@
 	
 <div class="main1">
 
-	<img class="logo1" 	src="Css\logo.png" style="position: absolute;
+	<img class="logo1" 	src="{{ url_for('static', filename='Css/logo.png') }}" style="position: absolute;
 width: 300px;
 height: 150px;
 left: -10px;
@@ -44,44 +44,36 @@ top: -258px;
 ">
 
 
-	<img class="mail" 	src="Css\m.png" style="position: absolute;
+	<img class="mail" 	src="{{ url_for('static', filename='Css/m.png') }}" style="position: absolute;
 width: 51px;
 height: 51px;
 left: 1219px;
 top: -207px;
 ">
-	<img class="search" src="Css\s.png" style="position: absolute;
+	<img class="search" src="{{ url_for('static', filename='Css/s.png') }}" style="position: absolute;
 width: 45px;
 height: 48px;
 left: 1290px;
 top: -205px;">
-	<img class="back1" 	src="Css\fit.png"style="position: absolute;
+	<img class="back1" 	src="{{ url_for('static', filename='Css/fit.png') }}" style="position: absolute;
 width: 1370px;
 height: 909px;
 left: 0px;
 top: -152px;">
-	
 
-	
 
 </div>	
 
 
-<img  src="Css\thx.png" style="position: absolute;
+<img  src="{{ url_for('static', filename='Css/thx.png') }}" style="position: absolute;
 width: 50%;
 left: 339px;
 top: 167px;
 ">
 
-<img  src="Css\phone.png" style="position: absolute;
-width: 40%;
-left: 419px;
-top: 287px;
-">
-
 
 <a href="Type.html">
-	<img  src="Css\back.png" style="position: absolute;
+	<img  src="{{ url_for('static', filename='Css/back.png') }}" style="position: absolute;
 width: 40%;
 left: 419px;
 top: 387px;
@@ -108,5 +100,5 @@ fill: rgba(250, 241, 194, 0.93);"/>
 <footer id="mainfoot" style=" text-align: center;
 		 background-color: rgba(250, 241, 194, 0.93);
 		 color:white;
-		 padding:10px; margin-top: 400px "><img src="Css\logo.png" style="width: 20%"></footer>
+		 padding:10px; margin-top: 400px "><img src="{{ url_for('static', filename='Css/logo.png') }}" style="width: 20%"></footer>
 </html>

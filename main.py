@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, url_for, jsonify
-import os
 from workout_engine.workout_engine import get_workout
 from workout_engine.schedule import send_sms
 from workout_engine.analyze_face import analyze_face
@@ -109,6 +108,11 @@ def get_schedule():
         send_sms(phone_number, time_full, workout_dic)
         return render_template("Thankyou.html")
 
+
+@app.route('/thankyou', methods=['GET'])
+def get_thankyou():
+    if request.method == "GET":
+        return render_template("Thankyou.html")
 
 
 if __name__ == '__main__':

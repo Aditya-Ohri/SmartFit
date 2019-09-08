@@ -1,4 +1,4 @@
-const POST_FREQUENCY = 5000;
+const POST_FREQUENCY = 4000;
 
 const videoPlayer = document.querySelector("#player");
 const captureButton = document.querySelector("#capture-btn");

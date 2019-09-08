@@ -18,9 +18,8 @@ import json
 import numpy as np
 import uuid
 
-ACCESS_ID = "XXXXXXXXXXXXXXXXXXXXXXX"
-ACCESS_KEY = "XXXXXXXXXXXXXXXXXXXXXXXX"
-
+ACCESS_ID = "XXXXXX"
+ACCESS_KEY = "XXXXXX"
 comprehend_client = boto3.client("comprehend", region_name='us-east-2',
                                  aws_access_key_id=ACCESS_ID,
                                  aws_secret_access_key=ACCESS_KEY
