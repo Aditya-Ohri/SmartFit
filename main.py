@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, jsonify
 import os
 from workout_engine.workout_engine import get_workout
 from workout_engine.schedule import send_sms
+from workout_engine.analyze_face import analyze_face
 
 app = Flask(__name__)
 
@@ -52,9 +53,9 @@ def get_mood():
         return render_template("mood.html")
 
 
-@app.route('/input', methods=['POST'])
+@app.route('/input', methods=['GET', 'POST'])
 def get_text():
-    global workout_dic
+    global workout_dic, user_profile
     if request.method == 'POST':
         text = request.form['text']
         print(text)
@@ -66,6 +67,16 @@ def get_text():
         workout = {"workout": workout_dic,
 		    'type_workout': user_profile['type_workout']}
         return render_template("workout.html", workout=workout)
+    elif request.method == 'GET':
+        # TESTING
+        user_profile = {'type_workout': 'legs', 'time': 15,
+                        'mood': 3, 'sentence': 'pretty good'}
+        workout_dic = get_workout(user_profile)
+        
+        # add type_workout to workout dic
+        workout = {"workout": workout_dic, "type_workout": user_profile['type_workout']}
+
+        return render_template("workout.html", workout=workout)
 
 
 @app.route('/workout', methods=['POST'])
@@ -75,6 +86,16 @@ def workout_route():
             return render_template("live.html")
         else:
             return render_template("calendar.html")
+
+@app.route('/realtime', methods=['GET', 'POST'])
+def real_time():
+    if request.method == 'POST':
+		# asynchronous queries to AWS to get feedback
+        feedback = analyze_face(request.form['photo'])
+        return jsonify(feedback)
+    elif request.method == 'GET':
+        # return static
+        return render_template("live.html")
 
 
 @app.route('/schedule', methods=['POST'])
