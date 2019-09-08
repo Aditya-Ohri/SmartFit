@@ -161,17 +161,19 @@ font-family:Helvetica;color:#F26A6A;
 
         <form action="{{ url_for('workout_route')}}" method="post" enctype="multipart/form-data">
             <button name="workout" type="submit" value="now">
-			    <img class="but1" src="{{ url_for('static', filename='Css/sub.png') }}" style="position: absolute;
-
-left: 1000px;
-top: 1158px;
-">
+					<img class="but1" src="{{ url_for('static', filename='Css/sub.png') }}" style="position: absolute;
+					width: 300px;
+height: 170px;
+					left: 1000px;
+					top: 1158px;
+					">
             </button>
             <button name="workout" type="submit" value="later">
-			    <img class="but2" src="{{ url_for('static', filename='Css/sced.png') }}" style="position: absolute;
-
-left: 700px;
-top: 1158px;
+			    <img class="but1" src="{{ url_for('static', filename='Css/sced.png') }}" style="position: absolute;
+				width: 300px;
+				height: 175px;
+				left: 650px;
+				top: 1152px;
 ">
             </button>
         </form>
