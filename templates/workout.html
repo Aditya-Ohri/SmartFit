@@ -31,18 +31,18 @@
 
 
 
-<title>Availability</title>
+<title>Personal Fitness AI</title>
 
 <body>
 
 	<div class="main1">
 
 		<img class="logo1" src="{{ url_for('static', filename='Css/logo.png') }}" style="position: absolute;
-width: 300px;
-height: 150px;
-left: -10px;
-top: -258px;
-">
+		width: 300px;
+		height: 150px;
+		left: -10px;
+		top: -258px;
+		">
 		<img class="mail" src="{{ url_for('static', filename='Css/m.png') }}" style="position: absolute;
 width: 51px;
 height: 51px;
@@ -159,18 +159,22 @@ font-family:Helvetica;color:#F26A6A;
 
 {% endfor %}
 
-			<img class="but1" src="{{ url_for('static', filename='Css/sub.png') }}" style="position: absolute;
+        <form action="{{ url_for('workout_route')}}" method="post" enctype="multipart/form-data">
+            <button name="workout" type="submit" value="now">
+			    <img class="but1" src="{{ url_for('static', filename='Css/sub.png') }}" style="position: absolute;
 
 left: 1000px;
 top: 1158px;
 ">
-
-			<img class="but2" src="{{ url_for('static', filename='Css/sced.png') }}" style="position: absolute;
+            </button>
+            <button name="workout" type="submit" value="later">
+			    <img class="but2" src="{{ url_for('static', filename='Css/sced.png') }}" style="position: absolute;
 
 left: 700px;
 top: 1158px;
 ">
-
+            </button>
+        </form>
 
 			<svg width="1440px" height="1052px">
 

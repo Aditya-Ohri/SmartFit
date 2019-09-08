@@ -18,11 +18,13 @@ import json
 import numpy as np
 import uuid
 
-ACCESS_ID = "XXXXXXXXXXXXXXXXXXXXX"
-ACCESS_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+ACCESS_ID = "XXXXXXXXXXXXXXXXXXXXXXX"
+ACCESS_KEY = "XXXXXXXXXXXXXXXXXXXXXXXX"
 
-
-comprehend_client = boto3.client("comprehend")
+comprehend_client = boto3.client("comprehend", region_name='us-east-2',
+                                 aws_access_key_id=ACCESS_ID,
+                                 aws_secret_access_key=ACCESS_KEY
+                                 )
 
 
 with open("data/workouts.json", "r") as f:
@@ -31,6 +33,7 @@ with open("data/workouts.json", "r") as f:
 
 with open("data/ratings.json", "r") as f:
     ratings = json.load(f)
+
 
 def compute_score(input_data):
     text_analyze = input_data["sentence"]
@@ -45,6 +48,7 @@ def compute_score(input_data):
 
 
 #print(compute_score(user_profile))
+
 
 def get_workout(input_data):
     score = compute_score(input_data)
@@ -68,7 +72,7 @@ def get_workout(input_data):
     print(narrowed_df)
     if type_workout == "cardio":
         for key in narrowed_df:
-            narrowed_df[key] = {"time": str(narrowed_df[key]) + " Min.", "sets": None, "reps": None}
+            narrowed_df[key] = {"time": str(narrowed_df[key]) + " Min.", "sets": "N/A", "reps": "N/A"}
         return narrowed_df
     else:
         for key in narrowed_df:
@@ -92,6 +96,7 @@ def add_post_workout_rating(workout_id, rating):
         })
     except:
         pass
+
 
 def suggest_workout():
     """
