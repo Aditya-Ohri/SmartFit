@@ -25,6 +25,8 @@
 <svg height="210" width="500">
   <polygon class="tri" points="200,10 250,190 160,210"/>
 </svg>
+<!-- add jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 
@@ -42,6 +44,17 @@ height: 150px;
 left: -10px;
 top: -258px;
 ">
+<a href="workout.html">
+  
+
+<img class="logo1" 	src="{{ url_for('static', filename='Css/end.png') }}" style="position: absolute;
+width: 450px;
+left: 470px;
+top: 588px;
+">
+
+</a>
+
 	<img class="mail" 	src="{{ url_for('static', filename='Css/m.png') }}" style="position: absolute;
 width: 51px;
 height: 51px;
@@ -63,44 +76,29 @@ top: -152px;">
 
 
 <div class="main1">
-	<img class="maint" 	src="{{ url_for('static', filename='Css/char.png') }}" style="position: absolute;
-width: 787px;
-height: 787px;
-left: 282px;
-top: -367px;
+	
 
-">
-<form action="{{ url_for('get_text')}}" method="post" enctype="multipart/form-data">
-<a href="final.html">
-  <button name="type" type="submit" value="txt">
-<div class="main1">
-	<img class="submit triangle" 	src="{{ url_for('static', filename='Css/tri.png') }}" style="position: absolute;
-width: 387px;
-height: 587px;
-left: -12px;
-top: 167px;
-
-
-">
-</button>
 </a>
 
 
-<textarea id="story"  placeholder="Type Here!"name="text"
-          rows="5" cols="33" style="position: absolute;
-width: 887px;
-height: 387px;
-left: 412px;
-top: 287px;
-font-family:Times New Roman;color:#003399;
- font-size: 25px; 
-resize: none;
-outline-color:rgba(250, 241, 194, 0.93);
+<video id="player" autoplay style="width: 60%;
+height: 500px;
+margin: 0 auto;
+padding-bottom: 20px;
+top: -107px;"></video>
 
-">
-
-</textarea>
-</form>
+<div id="feedback" style="text-align: center;
+background-color: #F26A6A;
+color: black;
+padding: 16px;
+font-family: Times New Roman;
+font-style: normal;
+font-weight: bold;
+font-size: 40px;
+line-height: 46px;
+border: none;">
+Let's begin!
+</div>
 
 
 <svg width="1440px" height="352px" >
@@ -118,7 +116,8 @@ fill: rgba(250, 241, 194, 0.93);"/>
  			
 </svg>
 
-
+<!-- realtime javascript -->
+<script src="{{ url_for('static', filename='Js/realtime.js') }}"></script>
 </body>
 <footer id="mainfoot" style=" text-align: center;
 		 background-color: rgba(250, 241, 194, 0.93);
